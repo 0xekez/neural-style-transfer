@@ -293,6 +293,31 @@ def run_style_transfer(content_path,
 
     return best_img, best_loss
 
+
+def  show_results (best_img, content_path, style_path, show_large_final=True):
+    plt.figure(figsize=(15, 15))
+    x = deprocess_img(best_img)
+    content = load_img(content_path)
+    style = load_img(style_path)
+
+    plt.subplot(1, 3, 1)
+    imshow(content, 'Content Image')
+
+    plt.subplot(1, 3, 2)
+    imshow(style, 'Style Image')
+
+    plt.subplot(1, 3, 3)
+    plt.imshow(x)
+    plt.title('Output Image')
+    plt.show()
+
+    if show_large_final:
+        plt.figure(figsize=(10, 10))
+
+        plt.imshow(x)
+        plt.title('Output Image')
+        plt.show()
+
 in_shape = (500,500,3)
 content = 'turtle.jpg'
 style = 'frida.jpg'
@@ -337,3 +362,5 @@ num_style_layers = len(style_layers)
 
 best, best_loss = run_style_transfer(content,
                                      style)
+
+show_results(best, content_path, style_path)
