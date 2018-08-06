@@ -338,6 +338,10 @@ plt.subplot(1,2,2)
 show_image(style_im, 'style')
 plt.show()
 
+input('press enter to continue ...')
+
+plt.close()
+
 '''
 were using a pretrained image classification network for this project .
 part of the reason were doing that is becasue it already has an internal
