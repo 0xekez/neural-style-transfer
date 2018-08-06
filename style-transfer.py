@@ -297,14 +297,14 @@ def run_style_transfer(content_path,
 def  show_results (best_img, content_path, style_path, show_large_final=True):
     plt.figure(figsize=(15, 15))
     x = deprocess_img(best_img)
-    content = load_img(content_path)
-    style = load_img(style_path)
+    content = load_image(content_path)
+    style = load_image(style_path)
 
     plt.subplot(1, 3, 1)
-    imshow(content, 'Content Image')
+    show_image(content, 'Content Image')
 
     plt.subplot(1, 3, 2)
-    imshow(style, 'Style Image')
+    show_image(style, 'Style Image')
 
     plt.subplot(1, 3, 3)
     plt.imshow(x)
@@ -319,8 +319,8 @@ def  show_results (best_img, content_path, style_path, show_large_final=True):
         plt.show()
 
 in_shape = (500,500,3)
-content = 'turtle.jpg'
-style = 'frida.jpg'
+content = 'zach.jpg'
+style = 'frida2.jpg'
 
 content = resize_image(content, (in_shape[0], in_shape[1]))
 style = resize_image(style, (in_shape[0], in_shape[1]))
@@ -365,6 +365,6 @@ num_content_layers = len(content_layers)
 num_style_layers = len(style_layers)
 
 best, best_loss = run_style_transfer(content,
-                                     style)
+                                     style, num_iterations = 2500)
 
-show_results(best, content_path, style_path)
+show_results(best, content, style)
